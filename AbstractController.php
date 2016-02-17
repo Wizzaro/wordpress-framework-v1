@@ -5,7 +5,7 @@ use Wizzaro\WPFramework\v1\Helper\View;
 
 abstract class AbstractController {
     
-    private $_bootstrap;
+    protected $_bootstrap;
     
     private $_view_templates_path;
     
