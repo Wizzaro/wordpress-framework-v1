@@ -35,6 +35,14 @@ abstract class AbstractBootstrap extends AbstractSingleton {
         return array();
     }
     
+    public function get( $group, $key, $default = '' ) {
+        if ( isset( $this->_config[$group][$key] ) ) {
+            return $this->_config[$group][$key];
+        }
+        
+        return $default;
+    }
+    
     public function get_dir_patch() {
         return '';
     }
