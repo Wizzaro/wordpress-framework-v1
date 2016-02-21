@@ -5,12 +5,12 @@ use Wizzaro\WPFramework\v1\Helper\View;
 
 abstract class AbstractController {
     
-    protected $_bootstrap;
+    protected $_config;
     
     private $_view_templates_path;
     
-    public function __construct( &$bootstrap ) {
-        $this->_bootstrap = $bootstrap;
+    public function __construct( &$config ) {
+        $this->_config = $config;
     }
     
     public function init() {
@@ -37,7 +37,7 @@ abstract class AbstractController {
                 $class_name = '';
             }
 
-            $this->_view_templates_path = $this->_bootstrap->get_view_templates_path(). 'controller' . DIRECTORY_SEPARATOR . $class_name . DIRECTORY_SEPARATOR;
+            $this->_view_templates_path = $this->_config->get_view_templates_path(). 'controller' . DIRECTORY_SEPARATOR . $class_name . DIRECTORY_SEPARATOR;
         }
         
         return $this->_view_templates_path;

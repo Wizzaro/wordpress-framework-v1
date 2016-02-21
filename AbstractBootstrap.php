@@ -12,13 +12,13 @@ abstract class AbstractBootstrap extends AbstractSingleton {
         
         //set configuration
         if ( array_key_exists( 'configuration', $config) ) {
-            $this->_set_config( $config['configuration'] );
+            $this->_config = $this->_set_config( $config['configuration'] );
         }
         
         //init controllers
         if ( array_key_exists( 'controllers', $config ) ) {
             foreach ( $config['controllers'] as $c_name ) {
-                $controller = new $c_name( $this );
+                $controller = new $c_name( $this->_config );
                 
                 $controller->init();
                 
@@ -36,6 +36,6 @@ abstract class AbstractBootstrap extends AbstractSingleton {
     }
     
     protected function _set_config( $config ) {
-        
+        return $config;
     }
 }
