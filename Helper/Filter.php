@@ -12,6 +12,17 @@ class Filter extends AbstractSingleton {
         return $text;
     }
     
+    public function filter_int( $int ) {
+        $int = $this->filter_text( $int );
+        $int = preg_replace('/[^0-9]/i', '', $int);
+        
+        if ( mb_strlen( $int ) > 0 ) {
+            return intval( $int );
+        }
+        
+        return '';
+    }
+    
     public function filter_hex_color( $color ) {
         if ( '' === $color )
             return '';
