@@ -8,7 +8,7 @@ class Validator extends AbstractSingleton {
     public function validate_min_max_int( $int, $min = null, $max = null, $default = false ) {
         if( is_numeric( $int ) ) {
             if( ( ! is_numeric( $min ) || ( $int >= $min ) ) && ( ! is_numeric( $max ) || ( $int <= $max ) ) ) {
-                return $int;
+                return true;
             }
         }
         
