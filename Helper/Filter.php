@@ -12,6 +12,21 @@ class Filter extends AbstractSingleton {
         return $text;
     }
     
+    public function filter_url( $url, $default_scheme = "http" ) {
+        $url = $this->filter_text( $url );
+            
+        if ( mb_strlen( $url ) > 0 ) {
+            $parse_url = parse_url( $url );
+            
+            if ( ! array_key_exists( 'scheme', $parse_url) ) {
+                $url = preg_replace( '/^(:)?(\/)*/i', '', $url);
+                $url = $default_scheme . '://' . $url;
+            }
+        }
+        
+        return $url;
+    }
+    
     public function filter_int( $int ) {
         $int = $this->filter_text( $int );
         $int = preg_replace('/[^0-9]/i', '', $int);
