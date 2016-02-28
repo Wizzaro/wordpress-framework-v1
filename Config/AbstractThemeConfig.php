@@ -5,7 +5,7 @@ use Wizzaro\WPFramework\v1\AbstractConfig;
 
 abstract class AbstractThemeConfig extends AbstractConfig {
     
-    public function get_dir_patch() {
+    public function get_dir_path() {
         if ( ! isset( $this->_config['path']['dir'] ) ) {
             $this->_config['path']['dir'] = get_template_directory() . DIRECTORY_SEPARATOR;
         }

@@ -21,7 +21,7 @@ abstract class AbstractConfig extends AbstractSingleton {
         return $default;
     }
     
-    public function get_dir_patch() {
+    public function get_dir_path() {
         return '';
     }
     
@@ -54,6 +54,6 @@ abstract class AbstractConfig extends AbstractSingleton {
     }
     
     public function get_view_templates_path() {
-        return $this->get_dir_patch() . $this->_config['view']['templates_path'] . DIRECTORY_SEPARATOR;
+        return $this->get_dir_path() . $this->_config['view']['templates_path'] . DIRECTORY_SEPARATOR;
     }
 }
