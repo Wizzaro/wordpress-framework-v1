@@ -5,7 +5,7 @@ use Wizzaro\WPFramework\v1\AbstractSingleton;
 
 abstract class AbstractConfig extends AbstractSingleton {
     
-    private $_config = array();
+    protected $_config = array();
     
     public function set_config( $config ) {
         if ( count( $this->_config ) <= 0 ) {
