@@ -1,7 +1,7 @@
 <?php
-namespace TwoXprBlogCore\Helper;
+namespace Wizzaro\WPFramework\v1\Helper;
 
-use TwoXprBlogCore\AbstractSingleton; 
+use Wizzaro\WPFramework\v1\AbstractSingleton;  
 
 class File extends AbstractSingleton {
     
