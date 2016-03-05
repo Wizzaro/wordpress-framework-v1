@@ -10,10 +10,10 @@ class File extends AbstractSingleton {
             $files = array_diff( scandir( $dir ), array( '.', '..' ) ); 
             
             foreach ($files as $file) {
-                ( is_dir( "$dir/$file" ) ) ? $this->rmdir( "$dir/$file" ) : unlink( "$dir/$file" ); 
+                ( is_dir( "$dir/$file" ) ) ? $this->rrmdir( "$dir/$file" ) : @unlink( "$dir/$file" ); 
             } 
             
-            rmdir( $dir ); 
+            @rmdir( $dir ); 
         }
     }
 }
