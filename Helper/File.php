@@ -9,7 +9,7 @@ class File extends AbstractSingleton {
         if ( is_dir( $dir ) ) {
             $files = array_diff( scandir( $dir ), array( '.', '..' ) ); 
             
-            foreach ($files as $file) { 
+            foreach ($files as $file) {
                 ( is_dir( "$dir/$file" ) ) ? $this->rmdir( "$dir/$file" ) : unlink( "$dir/$file" ); 
             } 
             
