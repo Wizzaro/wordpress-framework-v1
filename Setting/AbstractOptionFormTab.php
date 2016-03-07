@@ -39,7 +39,7 @@ abstract class AbstractOptionFormTab {
     }
     
     public function register_settings() {
-        $this->_setting_page_instance->register_settings( $this->_options, $this->_get_settings_config() );
+        $this->_setting_page_instance->register_settings( $this->_option_instance, $this->_get_settings_config() );
     }
     
     public function validate_options( $input ) {
