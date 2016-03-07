@@ -44,7 +44,7 @@ abstract class AbstractSettingsPage extends AbstractSingleton {
     }
     
     private function get_view_templates_path() {
-        return __DIR__ . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . 'settings-page' . DIRECTORY_SEPARATOR;
+        return __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR .'Views' . DIRECTORY_SEPARATOR . 'settings-page' . DIRECTORY_SEPARATOR;
     }
     
     public function add_tab( $tab_name, $tab_slug, $component, $render_function, $position = 1 ) {
