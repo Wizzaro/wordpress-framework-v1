@@ -1,5 +1,5 @@
 <?php
-namespace Wizzaro\WPFramework\v1\Setting;
+namespace Wizzaro\WPFramework\v1\Setting\OptionFormTab;
 
 abstract class AbstractOptionFormTab {
     

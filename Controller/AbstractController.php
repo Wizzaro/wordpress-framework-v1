@@ -1,5 +1,5 @@
 <?php
-namespace Wizzaro\WPFramework\v1;
+namespace Wizzaro\WPFramework\v1\Controller;
 
 use Wizzaro\WPFramework\v1\Helper\View;
 

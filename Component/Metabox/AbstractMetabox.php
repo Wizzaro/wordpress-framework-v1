@@ -1,5 +1,5 @@
 <?php
-namespace Wizzaro\WPFramework\v1\Component;
+namespace Wizzaro\WPFramework\v1\Component\Metabox;
 
 use Wizzaro\WPFramework\v1\AbstractSingleton; 
 

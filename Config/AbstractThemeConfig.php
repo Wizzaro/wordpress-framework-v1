@@ -1,7 +1,7 @@
 <?php
 namespace Wizzaro\WPFramework\v1\Config;
 
-use Wizzaro\WPFramework\v1\AbstractConfig;
+use Wizzaro\WPFramework\v1\Config\AbstractConfig;
 
 abstract class AbstractThemeConfig extends AbstractConfig {
     
