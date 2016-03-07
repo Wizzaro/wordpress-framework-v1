@@ -6,7 +6,7 @@ use Wizzaro\WPFramework\v1\AbstractSingleton;
 class View extends AbstractSingleton {
     
     public function get_instance_view_path( $instance ) {
-        $path = preg_replace( '/(\\|\/)/i', DIRECTORY_SEPARATOR, get_class( $instance ) );
+        $path = preg_replace( '/(\\\|\/)/i', DIRECTORY_SEPARATOR, get_class( $instance ) );
         $path = mb_strtolower( preg_replace( '/([a-z])([A-Z])/', '$1-$2', $path) );
         
         if ( mb_strlen( $path ) > 0 ) {
