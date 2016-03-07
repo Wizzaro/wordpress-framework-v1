@@ -7,19 +7,23 @@ abstract class AbstractOptionFormTab {
     
     protected $_option_instance;
     
-    protected $_tab_option = array(
-        'name' => '',
-        'slug' => ''
-    );
-    
     public function _construct( &$setting_page_instance, &$option_instance ) {
         
+        $tab_conf = $this->_get_tab_config();
+        
         $this->_setting_page_instance = $setting_page_instance;
-        $this->_setting_page_instance->add_tab( $this->_tab_option['name'], $this->_tab_option['slug'], $this, 'render_option_tab' );
+        $this->_setting_page_instance->add_tab( $tab_conf['name'], $tab_conf['slug'], $this, 'render_option_tab' );
         
         $this->_option_instance = $option_instance;
         
         add_action( 'admin_init', array( $this, 'register_settings' ) );
+    }
+    
+    protected function _get_tab_config() {
+        return array(
+            'name' => '',
+            'slug' => ''
+        );
     }
     
     protected function _get_settings_config() {
