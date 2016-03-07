@@ -1,7 +1,7 @@
 <?php
 namespace Wizzaro\WPFramework\v1\Setting;
 
-abstract class AbstractForm {
+abstract class AbstractOptionFormTab {
     
     protected $_setting_page_instance;
     
@@ -12,11 +12,14 @@ abstract class AbstractForm {
         'slug' => ''
     );
     
-    public function _construct( $setting_page_instance ) {
-        $this->_setting_page_instance = $setting_page_instance;
-        $this->_setting_page_instance->add_tab( $this->_tab_option['name'], $this->_tab_option['slug'], $this, 'render_setting_tab' );
+    public function _construct( &$setting_page_instance, &$option_instance ) {
         
-        //in this place you mas create option instance !!!
+        $this->_setting_page_instance = $setting_page_instance;
+        $this->_setting_page_instance->add_tab( $this->_tab_option['name'], $this->_tab_option['slug'], $this, 'render_option_tab' );
+        
+        $this->_option_instance = $option_instance;
+        
+        add_action( 'admin_init', array( $this, 'register_settings' ) );
     }
     
     protected function _get_settings_config() {
@@ -27,7 +30,7 @@ abstract class AbstractForm {
         return $this->_option_instance;
     }
     
-    public function render_setting_tab() {
+    public function render_option_tab() {
         $this->_setting_page_instance->render_settings_form( $this->_get_settings_config() );
     }
     
