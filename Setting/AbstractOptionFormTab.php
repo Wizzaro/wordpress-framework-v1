@@ -7,7 +7,7 @@ abstract class AbstractOptionFormTab {
     
     protected $_option_instance;
     
-    public function _construct( &$setting_page_instance, &$option_instance ) {
+    public function __construct( &$setting_page_instance, &$option_instance ) {
         
         $tab_conf = $this->_get_tab_config();
         
