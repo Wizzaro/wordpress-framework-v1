@@ -32,6 +32,6 @@ class View extends AbstractSingleton {
     }
     
     public function get_content_for_instance( $templates_path, $instance, $file_name, $view_data ) {
-        return $this->get_content( $templates_path . DIRECTORY_SEPARATOR . $thi->get_instance_view_path( $instance ) . $file_name . '.php', $view_data );
+        return $this->get_content( $templates_path . DIRECTORY_SEPARATOR . $this->get_instance_view_path( $instance ) . $file_name . '.php', $view_data );
     }
 }
