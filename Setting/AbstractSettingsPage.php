@@ -131,10 +131,12 @@ abstract class AbstractSettingsPage extends AbstractSingleton {
     
     public function register_settings( &$component, $config ) {
         
-        foreach ( $config as $setting_name => $st_config ) {
+        foreach ( $config['settings'] as $setting_name => $st_config ) {
+            
+            $page = isset( $config['multiple'] ) && $config['multiple'] === true ? $setting_name : $config['page']; 
             
             register_setting(
-                $setting_name, // Option group
+                $page, // Option group
                 $setting_name, // Option name
                 $st_config['callback'] // Sanitize Callback
             );
@@ -174,15 +176,15 @@ abstract class AbstractSettingsPage extends AbstractSingleton {
         }
     }
 
-    public function render_settings_form( $config, $single_option_form = false ) {
-        if ( $single_option_form ) {
-            foreach($config as $setting_name => $st_config) {
+    public function render_settings_form( $config ) {
+        if ( isset( $config['multiple'] ) && $config['multiple'] === true ) {
+            foreach($config['settings'] as $setting_name => $st_config) {
                 ?>
                 <form method="post" action="options.php">
                     <?php
-                    echo isset( $st_config['title'] ) ? '<h1>' . $st_config['title'] . '</h1>': '' ;
                     settings_fields( $setting_name );   
-                    foreach( $st_config['sections'] as $section_name => $sc_config ) {
+                    echo isset( $st_config['title'] ) ? '<h1>' . $st_config['title'] . '</h1>': '' ;
+                    foreach ( $st_config['sections'] as $section_name => $sc_config ) {
                         do_settings_sections( $section_name );
                     }
                     submit_button(); 
@@ -194,10 +196,10 @@ abstract class AbstractSettingsPage extends AbstractSingleton {
             ?>
             <form method="post" action="options.php">
                 <?php
-                foreach($config as $setting_name => $st_config) {
+                settings_fields( $config['page'] );   
+                foreach ( $config['settings'] as $setting_name => $st_config ) {
                     echo isset( $st_config['title'] ) ? '<h1>' . $st_config['title'] . '</h1>': '' ;
-                    settings_fields( $setting_name );   
-                    foreach( $st_config['sections'] as $section_name => $sc_config ) {
+                    foreach ( $st_config['sections'] as $section_name => $sc_config ) {
                         do_settings_sections( $section_name );
                     }
                 }

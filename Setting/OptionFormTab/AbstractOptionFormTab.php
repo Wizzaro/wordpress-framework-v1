@@ -7,8 +7,6 @@ abstract class AbstractOptionFormTab {
     
     protected $_option_instance;
     
-    protected $_single_option_form;
-    
     public function __construct( &$setting_page_instance, &$option_instance ) {
         
         $tab_conf = $this->_get_tab_config();
@@ -37,7 +35,7 @@ abstract class AbstractOptionFormTab {
     }
     
     public function render_option_tab() {
-        $this->_setting_page_instance->render_settings_form( $this->_get_settings_config(), $this->_single_option_form );
+        $this->_setting_page_instance->render_settings_form( $this->_get_settings_config() );
     }
     
     public function register_settings() {
