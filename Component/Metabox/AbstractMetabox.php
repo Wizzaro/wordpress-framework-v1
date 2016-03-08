@@ -3,7 +3,7 @@ namespace Wizzaro\WPFramework\v1\Component\Metabox;
 
 use Wizzaro\WPFramework\v1\AbstractSingleton; 
 
-class AbstractMetabox extends AbstractSingleton {
+abstract class AbstractMetabox extends AbstractSingleton {
     
     protected function __construct() {
         add_action( 'do_meta_boxes', array( $this, 'register' ) );
