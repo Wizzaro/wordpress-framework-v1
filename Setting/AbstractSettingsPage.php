@@ -174,26 +174,40 @@ abstract class AbstractSettingsPage extends AbstractSingleton {
         }
     }
 
-    public function render_settings_form( $config ) {
-        ?>
-        <form method="post" action="options.php">
-            <?php
+    public function render_settings_form( $config, $single_option_form = false ) {
+        if ( $single_option_form ) {
             foreach($config as $setting_name => $st_config) {
-                var_dump($setting_name);
                 ?>
-                
+                <form method="post" action="options.php">
                     <?php
                     settings_fields( $setting_name );   
                     foreach( $st_config['sections'] as $section_name => $sc_config ) {
-                        var_dump($section_name);
                         do_settings_sections( $section_name );
                     }
+                    submit_button(); 
+                    ?>
+                </form>
+                <?php    
             }
-            
-            submit_button(); 
+        } else {
             ?>
-        </form>
-        <?php
+            <form method="post" action="options.php">
+                <?php
+                foreach($config as $setting_name => $st_config) {
+                    ?>
+                    
+                        <?php
+                        settings_fields( $setting_name );   
+                        foreach( $st_config['sections'] as $section_name => $sc_config ) {
+                            do_settings_sections( $section_name );
+                        }
+                }
+                
+                submit_button(); 
+                ?>
+            </form>
+            <?php
+        }
     }
 
     public function render_section_description( $args, $descriptions ) {
