@@ -76,6 +76,10 @@ class Option {
         return false;
     }
 
+    public function get_all_options() {
+        return $this->_options;
+    }
+
     public function get_options( $opt_key ) {
         if ( array_key_exists( $opt_key, $this->_options ) ) {
             return $this->_options[$opt_key];
