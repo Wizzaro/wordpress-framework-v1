@@ -180,6 +180,7 @@ abstract class AbstractSettingsPage extends AbstractSingleton {
                 ?>
                 <form method="post" action="options.php">
                     <?php
+                    isset( $st_config['title'] ) ? '<h1>' . $st_config['title'] . '</h1>': '' ;
                     settings_fields( $setting_name );   
                     foreach( $st_config['sections'] as $section_name => $sc_config ) {
                         do_settings_sections( $section_name );
@@ -194,13 +195,11 @@ abstract class AbstractSettingsPage extends AbstractSingleton {
             <form method="post" action="options.php">
                 <?php
                 foreach($config as $setting_name => $st_config) {
-                    ?>
-                    
-                        <?php
-                        settings_fields( $setting_name );   
-                        foreach( $st_config['sections'] as $section_name => $sc_config ) {
-                            do_settings_sections( $section_name );
-                        }
+                    isset( $st_config['title'] ) ? '<h1>' . $st_config['title'] . '</h1>': '' ;
+                    settings_fields( $setting_name );   
+                    foreach( $st_config['sections'] as $section_name => $sc_config ) {
+                        do_settings_sections( $section_name );
+                    }
                 }
                 
                 submit_button(); 
