@@ -72,7 +72,7 @@ abstract class AbstractTaxonomyOption extends AbstractSingleton {
     public function render_form_field_for_add( $taxonomy ) {
         ?>
         <div class="form-field">
-            <label for="<?php echo $this->_form_field_name; ?>"><?php $this->_get_label(); ?></label>
+            <label for="<?php echo $this->_form_field_name; ?>"><?php echo $this->_get_label(); ?></label>
             <?php
                 $this->_render_form_field( $this->_default_value, $taxonomy );
                 
@@ -90,7 +90,7 @@ abstract class AbstractTaxonomyOption extends AbstractSingleton {
         ?>
         <tr class="form-field">
             <th scope="row" valign="top">
-                <label for="<?php echo $this->_form_field_name; ?>"><?php $this->_get_label(); ?></label>
+                <label for="<?php echo $this->_form_field_name; ?>"><?php echo $this->_get_label(); ?></label>
             </th>
             <td>
                 <?php
