@@ -129,6 +129,10 @@ abstract class AbstractSettingsPage extends AbstractSingleton {
         return $this->_settings_fields[$field_type];
     }
     
+    private function _parse_section_name( $setting_name, $section_name ) {
+        return $setting_name . '_' . $section_name;
+    }
+    
     public function register_settings( &$component, $config ) {
         
         foreach ( $config['settings'] as $setting_name => $st_config ) {
@@ -142,6 +146,8 @@ abstract class AbstractSettingsPage extends AbstractSingleton {
             );
             
             foreach ( $st_config['sections'] as $section_name => $sc_config ) {
+                $section_name = $this->_parse_section_name( $setting_name, $section_name );
+
                 add_settings_section(
                     $section_name, // ID
                     $sc_config['title'], // Title
@@ -185,6 +191,7 @@ abstract class AbstractSettingsPage extends AbstractSingleton {
                     settings_fields( $setting_name );   
                     echo isset( $st_config['title'] ) ? '<h1>' . $st_config['title'] . '</h1>': '' ;
                     foreach ( $st_config['sections'] as $section_name => $sc_config ) {
+                        $section_name = $this->_parse_section_name( $setting_name, $section_name );
                         do_settings_sections( $section_name );
                     }
                     submit_button(); 
@@ -200,6 +207,7 @@ abstract class AbstractSettingsPage extends AbstractSingleton {
                 foreach ( $config['settings'] as $setting_name => $st_config ) {
                     echo isset( $st_config['title'] ) ? '<h1>' . $st_config['title'] . '</h1>': '' ;
                     foreach ( $st_config['sections'] as $section_name => $sc_config ) {
+                        $section_name = $this->_parse_section_name( $setting_name, $section_name );
                         do_settings_sections( $section_name );
                     }
                 }
