@@ -5,7 +5,7 @@ use Wizzaro\WPFramework\v1\AbstractSingleton;
 
 abstract class AbstractOption extends AbstractSingleton {
     
-    private $_options = array();
+    protected $_options = array();
     
     protected function __construct() {
         $this->load_options();
