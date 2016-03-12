@@ -13,6 +13,14 @@ abstract class AbstractConfig extends AbstractSingleton {
         }
     }
     
+    public function get_group( $group, $default = array() ) {
+        if ( isset( $this->_config[$group] ) ) {
+            return $this->_config[$group];
+        }
+        
+        return $default;
+    }
+    
     public function get( $group, $key, $default = '' ) {
         if ( isset( $this->_config[$group][$key] ) ) {
             return $this->_config[$group][$key];
