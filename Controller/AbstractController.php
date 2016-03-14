@@ -38,7 +38,7 @@ abstract class AbstractController {
         View::get_instance()->render( $this->get_view_templates_path() . $view_file . '.php', $view_data );
     }
     
-    public function get_view() {
+    public function get_view( $view_file, $view_data = array() ) {
         return View::get_instance()->get_content( $this->get_view_templates_path() . $view_file . '.php', $view_data );
     }
 }
