@@ -6,15 +6,37 @@ use Wizzaro\WPFramework\v1\AbstractSingleton;
 class Request extends AbstractSingleton {
     
     public function is_ajax() {
-        return defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+        if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || ( ! empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' ) ) {
+            return true;
+        }
+        
+        return false;
     }
     
-    public function get_request_url() {
-        if ( array_key_exists( 'HTTP_HOST', $_SERVER ) && array_key_exists( 'REQUEST_URI', $_SERVER ) ) {
-            return 'http' . ( empty( $_SERVER['HTTPS'] ) ? '' : 's' ) . '://' . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
+    public function get_host_url() {
+        if ( array_key_exists( 'HTTP_HOST', $_SERVER ) ) {
+            return 'http' . ( empty( $_SERVER['HTTPS'] ) ? '' : 's' ) . '://' . $_SERVER['HTTP_HOST'];
         }
         
         return '';
+    }
+    
+    public function get_request_url( $with_parameters = true ) {
+        $host_url = $this->get_host_url();
+        
+        if ( array_key_exists( 'REQUEST_URI', $_SERVER ) && mb_strlen( $host_url ) > 0 ) {
+            return $host_url . $this->get_request_uri( $with_parameters );
+        }
+        
+        return '';
+    }
+    
+    public function get_request_uri( $with_parameters = true ) {
+        if ( $with_parameters ) {
+            return $_SERVER['REQUEST_URI'];
+        }
+        
+        return parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
     }
     
     public function get_user_agent() {
