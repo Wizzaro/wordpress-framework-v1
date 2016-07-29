@@ -1,10 +1,9 @@
 <?php
 namespace Wizzaro\WPFramework\v1\Setting;
 
-use Wizzaro\WPFramework\v1\AbstractSingleton; 
 use Wizzaro\WPFramework\v1\Helper\View;
 
-abstract class AbstractSettingsPage extends AbstractSingleton {
+abstract class AbstractSettingsPage {
     
     protected $_page_config;
     
@@ -14,9 +13,9 @@ abstract class AbstractSettingsPage extends AbstractSingleton {
     
     private $_settings_fields = array();
     
-    public function __construct() {
+    public function __construct( array $page_config = array() ) {
         if ( is_admin() ) {
-            $this->_page_config = $this->get_page_config();
+            $this->_page_config = (object) array_merge( $this->get_page_config(), $page_config );
             
             add_action('admin_menu', array($this, 'add_options_page'));
             
@@ -35,7 +34,7 @@ abstract class AbstractSettingsPage extends AbstractSingleton {
     }
     
     protected function get_page_config() {
-        return (object) array(
+        return array(
             'page_title' => '',
             'menu_title' => '',
             'capability' => '',
