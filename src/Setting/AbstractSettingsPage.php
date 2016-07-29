@@ -6,7 +6,7 @@ use Wizzaro\WPFramework\v1\Helper\View;
 
 abstract class AbstractSettingsPage extends AbstractSingleton {
     
-    private $_page_config;
+    protected $_page_config;
     
     private $_admin_tabs = array();
     private $_default_tab = '';
