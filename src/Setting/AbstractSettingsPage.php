@@ -267,7 +267,7 @@ abstract class AbstractSettingsPage {
         $value = $this->_get_field_value( $args );
         $args['value'] = $value;
 
-        View::get_instance()->render( $this->get_view_templates_path() . 'fields' . DIRECTORY_SEPARATOR . 'admin-field-select', $args, false, $this->get_view_templates_path() );
+        View::get_instance()->render( $this->get_view_templates_path() . 'fields' . DIRECTORY_SEPARATOR . 'admin-field-select.php', $args, false, $this->get_view_templates_path() );
         
         $this->render_field_description( $args );
     }
@@ -278,7 +278,7 @@ abstract class AbstractSettingsPage {
         $args['value'] = $value;
         $args['select_options'] = get_pages();
 
-        View::get_instance()->render( $this->get_view_templates_path() . 'fields' . DIRECTORY_SEPARATOR . 'admin-field-wp-page', $args, false, $this->get_view_templates_path() );
+        View::get_instance()->render( $this->get_view_templates_path() . 'fields' . DIRECTORY_SEPARATOR . 'admin-field-wp-page.php', $args, false, $this->get_view_templates_path() );
         
         $this->render_field_description( $args );
     }
