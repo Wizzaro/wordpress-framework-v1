@@ -2,6 +2,7 @@
 namespace Wizzaro\WPFramework\v1\Controller;
 
 use Wizzaro\WPFramework\v1\Controller\AbstractController;
+use Wizzaro\WPFramework\v1\Helper\View;
 
 abstract class AbstractPluginController extends AbstractController {
     
